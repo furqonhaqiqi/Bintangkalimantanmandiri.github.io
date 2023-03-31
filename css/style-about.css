@@ -979,8 +979,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .leader .card img {
-    width: 280px;
-    height: 330px;
+    width: 100%;
     transition: 500ms;
 }
 
@@ -1307,18 +1306,6 @@ body.mobile-nav-active #mobile-nav-toggle {
     margin: 0;
 }
 
-/* --------------- project-site Style -------------- */
-/* --------------- projects Style -------------- */
-
-.projects {
-    position: relative;
-    padding: 60px 0;
-    background: #f2f2f2;
-}
-
-.projects .container {
-    max-width: 900px;
-}
 
 .projects .section-header {
     margin-bottom: 20px;
@@ -1332,13 +1319,6 @@ body.mobile-nav-active #mobile-nav-toggle {
     
 }
 
-.projects .project-item:hover img {
-    
-    border-radius: 5px;
-    min-height: 200px;
-    min-width: 200px;
-    transition: 300ms;
-}
 
 .projects .project-text {
     padding: 25px 25px 25px 0;
