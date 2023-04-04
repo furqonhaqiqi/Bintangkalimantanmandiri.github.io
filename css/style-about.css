@@ -942,9 +942,9 @@ body.mobile-nav-active #mobile-nav-toggle {
     text-transform: uppercase;
     text-align: center;
     position: relative;
-    padding-bottom: 10px;
     color: #1dbf73;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: -20px;
 }
 
 
@@ -966,6 +966,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     padding-top: 20px;
 }
 .leader .card {
+    
     position: relative;
     background: #ffffff;
     text-align: center;
@@ -1007,9 +1008,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     text-transform: uppercase;
 }
 
-.leader .features-status {
-    margin-top: -30px;
-}
+
 
 .leader .features-status .status-title {
     background: #1dbf73;
