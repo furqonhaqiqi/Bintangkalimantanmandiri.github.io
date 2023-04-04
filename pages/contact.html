@@ -21,9 +21,10 @@
     <link href="../vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="../vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="../vendor/lightbox/css/lightbox.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <!-- Main Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -120,22 +121,32 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form">
-                        <form>
+                        
+                        <div class="alert alert-success alert-dismissible fade show my-alert d-none" role="alert">
+                            <strong>Terima Kasih!</strong> Pesan anda telah kami Terima.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                                                
+                        <form name="bkm-kontak-form">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" placeholder="Your Name" />
+                                    <input name="nama" type="text" class="form-control" placeholder="Your Name" />
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="email" class="form-control" placeholder="Your Email" />
+                                    <input name="email" type="email" class="form-control" placeholder="Your Email" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Subject" />
+                                <input name="subjek" type="text" class="form-control" placeholder="Subjek" />
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="5" placeholder="Message"></textarea>
+                                <textarea name="pesan" class="form-control" rows="5" placeholder="Pesan"></textarea>
                             </div>
-                            <div><button type="submit">Send Message</button></div>
+                            <div class="button-submit btn-kirim"><button type="submit">Kirim Pesan</button></div>
+                            <button class="btn btn-primary btn-loading d-none " type="button" disabled style="padding: 9px; background:#1dbf73;" >
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Mengirim...
+                              </button>
                         </form>
                     </div>
                 </div>
@@ -216,6 +227,34 @@
 
     <!-- Main Javascript File -->
     <script src="../js/main.js"></script>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbznqUgYd6bFlxSpk7oy_99mmLTRE25l8ehsoVROhQkqVQr98JyoQ5NbfT-jR6tLJxJn/exec'
+        const form = document.forms['bkm-kontak-form']
+        const btnKirim = document.querySelector('.btn-kirim');
+        const btnLoading = document.querySelector('.btn-loading');
+        const myAlert = document.querySelector('.my-alert');
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          //ketikas tombol submnit diklik
+          //tampilkan tombil loading, hilangkan tombol kirim
+          btnLoading.classList.toggle('d-none');
+          btnKirim.classList.toggle('d-none');
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                //tampilkan tombil kirim, hilangkan tombol loading
+                btnLoading.classList.toggle('d-none');
+                btnKirim.classList.toggle('d-none');
+                //tampilkan alert
+                myAlert.classList.toggle('d-none');
+                //reset formnya
+                form.reset();
+                console.log('Success!', response);
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
 
 </body>
 
